@@ -50,7 +50,7 @@ class AddNewsForm extends Model
     {
         if ($this->validate()) {
             foreach ($this->imageFiles as $file) {
-                $fileName = 'uploads/' . md5($file->baseName) . '.' . $file->extension;
+                $fileName = 'uploads/' . md5($file->baseName . time()) . '.' . $file->extension;
                 $file->saveAs($fileName, false);
                 $this->imageNames[] = $fileName;
             }
